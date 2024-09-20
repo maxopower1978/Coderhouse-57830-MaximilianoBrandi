@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    {% if form.instance.pk %}
+        App Clientes: Actualizando clientes
+    {% else %}
+        App Clientes: Agregando clientes
+    {% endif %}
+{% endblock header %}
+
+{% block main %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Enviar</button>
+    </form>
+    <button>
+        <a href="{% url 'clientes:index' %}">Atrás</a>
+    </button>
+{% endblock main %}

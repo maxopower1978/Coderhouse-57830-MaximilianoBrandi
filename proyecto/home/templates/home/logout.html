@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block header %}
+    Logout
+{% endblock header %}
+
+{% block main %}
+    <p>Has cerrado sesión</p>
+    <img src="{% static 'home/img/estudio.jpeg' %}" alt="imagen" width="70%" height="300vh" style="display: block; margin: auto"/>
+    <button type="submit"><a href="{% url 'home:index' %}">HOME</a></button>
+{% endblock main %}

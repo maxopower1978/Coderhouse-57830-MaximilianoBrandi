@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    Login
+{% endblock header %}
+
+{% block main %}
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Iniciar sesion</button>
+    </form>
+    <p>¿Nuevo usuario? <a href="{% url 'home:register' %}">Registrarse</a></p>
+{% endblock main %}

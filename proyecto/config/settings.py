@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    # 'clientes',
+    'clientes',
     'derechos',
     'nosotros',
     # 'consultas',
@@ -130,7 +130,8 @@ STATICFILES_DIRS = [BASE_DIR / "home/static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# MEDIA_ROOT sirve para indicar la ruta donde se almacenarán los archivos multimedia
-MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_URL indica la URL pública desde donde se podrán acceder a los archivos multimedia
 MEDIA_URL = '/media/'
+# MEDIA_ROOT sirve para indicar la ruta donde se almacenarán los archivos multimedia
+MEDIA_ROOT = BASE_DIR / 'media'
+

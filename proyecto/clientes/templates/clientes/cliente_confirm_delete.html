@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    App Clientes: Eliminar Clientes
+{% endblock header %}
+
+{% block main %}
+    <p>Esta seguro que desea borrar el cliente "{{ object.dni }}"?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirma?</button>
+    </form>
+    <button><a href="{% url 'clientes:cliente_list' %}">Atrás</a></button>
+{% endblock main %}

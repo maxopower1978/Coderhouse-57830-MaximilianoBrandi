@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    App Clientes: Detalle de Clientes
+{% endblock header %}
+
+{% block main %}
+    <form action="{% url 'clientes:cliente_list' %}" method="get">
+        <input type="text" name="q" placeholder="Buscar cliente....">
+        <button type="submit">Buscar cliente</button>
+    </form>
+    <ul>
+        <li>CUIL: {{ object.cuil }}</li>
+        <li>Nombre: {{ object.nombre }}</li>
+        <li>Apellido: {{ object.apellido }}</li>
+        <li>Telefono: {{ object.telefono }}</li>
+    </ul>
+    <button><a href="{% url 'clientes:cliente_list' %}">Atrás</a></button>
+{% endblock main %}
