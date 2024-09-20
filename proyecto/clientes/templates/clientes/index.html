@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    App Clientes
+{% endblock header %}
+
+{% block main %}
+    <div>
+        <button><a href="{% url 'clientes:cliente_list' %}">Listar Clientes</a></button>
+        <button><a href="{% url 'clientes:cliente_create' %}">Crear Clientes</a></button>
+    </div>
+{% endblock main %}
+
