@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'clientes',
-    'derechos',
+    # 'clientes',
+    # 'derechos',
     'nosotros',
-    'consultas',
+    # 'consultas',
 ]
 
 MIDDLEWARE = [
@@ -120,10 +120,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'home/static/'
 
 # Ruta donde Django buscará tus archivos estáticos en el sistema
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "home/static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
