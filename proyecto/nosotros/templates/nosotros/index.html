@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+<div style="display: flex; justify-content: center; align-items: center; height: 15vh;">
+    <h3 style="margin-bottom: 15px; font-family: 'Arial', sans-serif;">Socios del Estudio Jurídico</h3>
+</div>
+{% endblock header %}
+
+{% block main %}
+
+{% load static %}
+{% for object in object_list %}
+    <div style="text-align: justify;">
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <img src="{% static 'home/img/abogada.jpg' %}" alt="{{ object.nombre }}" style="width: 200px; height: 200px; border-radius: 50%; margin-right: 20px;">
+            <div>
+                <h3 style="margin: 0; font-family: 'Arial', sans-serif; margin-bottom: 20px;">{{ object.nombre|upper }}</h3>
+                <p style="font-family: 'Georgia', serif; margin-right: 125px;">{{ object.descripcion }}</p>
+                <p style="font-family: 'Arial', sans-serif;">
+                    <img src="{% static 'home/img/telefono.png' %}" alt="Teléfono" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 5px;">
+                        {{ object.celular }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock main %}
