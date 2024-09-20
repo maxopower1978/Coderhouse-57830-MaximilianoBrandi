@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+<div style="display: flex; justify-content: center; align-items: center; height: 15vh;">
+    <h3 style="margin-bottom: 15px; font-family: 'Arial', sans-serif;">Derechos Asesorados</h3>
+</div>
+{% endblock header %}
+
+
+{% block main %}
+{% load static %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    {% for object in object_list %}
+        {% if object.disponible %}
+            <div style="display: flex; align-items: flex-start; margin-bottom: 20px; width: 80%; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                <!-- Nombre del objeto a la izquierda en un recuadro azul -->
+                <div style="background-color: #007BFF; padding: 10px; color: white; margin-right: 20px; border-radius: 5px; min-width: 150px; text-align: center;">
+                    <h3 style="margin: 0; font-family: 'Arial', sans-serif;">{{ object.nombre|upper }}</h3>
+                </div>
+
+                <!-- Descripción justificada con margen derecho -->
+                <div style="flex: 1; margin-right: 20px;">
+                    <p style="font-family: 'Georgia', serif; text-align: justify;">{{ object.descripcion }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock main %}
+
