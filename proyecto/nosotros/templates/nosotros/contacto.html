@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+{% load static %}
+<style>
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .photo {
+            margin-right: 20px;
+        }
+        .photo img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <div class="container">
+        <div class="photo">
+            <img src="{% static 'home/img/abogada.jpg' %}" alt="Tu Foto">
+        </div>
+        <div class="contact-info">
+            <h2>Tu Nombre</h2>
+            <p>Teléfono: <a href="Whatsapp:+54 9 341 555-5555">Whatsapp +54 9 341 555-5555</a></p>
+            <p>Email: <a href="mailto:drafr@gmail.com">tu-email@example.com</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/estudiodrafr" target="_blank">@tuusuario</a></p>
+            <p>Opiniones de Google: <a href="https://www.google.com/maps/place/estudiodrafr" target="_blank">Ver Opiniones</a></p>
+        </div>
+    </div>
+{% endblock header %}

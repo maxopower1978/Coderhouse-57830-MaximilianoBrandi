@@ -25,9 +25,19 @@
                     <li class="nav-item">
                         <a class="btn btn-outline-primary me-2" href="{% url 'derechos:derechos' %}">Derechos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary me-2" href="{% url 'nosotros:contacto' %}">Contáctanos</a>
+                    </li>
+                    <!-- <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="email" placeholder="Correo Electrónico" aria-label="email">
+                        <button class="btn btn-outline-success" type="submit">Suscríbete</button>
+                    </form> -->
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary me-2" href="#">Consulta</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-primary me-2" href="{% url 'home:profile' %}">{{ user.username }}</a>
@@ -46,19 +56,7 @@
                             <a class="btn btn-outline-primary me-2" href="{% url 'home:login' %}">Clientes</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary me-2" href="#">Consulta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary" href="#">Contáctanos</a>
-                    </li>
                 </ul>
-                <!-- 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="email" placeholder="Correo Electrónico" aria-label="email">
-                    <button class="btn btn-outline-success" type="submit">Suscríbete</button>
-                </form>
-                -->
             </div>
         </div>
     </nav>

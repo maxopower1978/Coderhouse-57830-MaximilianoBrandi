@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+    }
+    h1 {
+        color: #0056b3;
+    }
+    a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    </style>
+
+<div class="container">
+    <h1>¡Hola! Me llamo Maximiliano Brandi y soy Ingeniero Industrial</h1>
+    <p>Actualmente termino de cursar Python en Coderhouse y este es mi proyecto final.</p>
+    <p>Para más información, puedes visitar mi perfil de LinkedIn:</p>
+    <a href="https://www.linkedin.com/in/maximiliano-brandi-02725b61/" target="_blank">
+        Visita mi LinkedIn 
+    </a>
+</div>
+{% endblock header %}
