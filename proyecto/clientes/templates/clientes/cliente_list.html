@@ -1,26 +1,59 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
-    App Clientes: Lista de Clientes
+    <h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+        Lista de Clientes
+    </h1>
 {% endblock header %}
 
 {% block main %}
-    <form action="{% url 'clientes:cliente_list' %}" method="get">
-        <input type="text" name="q" placeholder="Buscar cliente....">
-        <button type="submit">Buscar cliente</button>
-        <button><a href="{% url 'clientes:cliente_create' %}" class="button">Crear Registro</a></button>
+<div style="text-align: center; background-color: #e0f7fa; padding: 20px;">
+    <form action="{% url 'clientes:cliente_list' %}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar cliente...." style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #0097a7;">
+        <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; border: none; border-radius: 5px; color: white;">Buscar cliente</button>
+        <button style="padding: 10px 20px; background-color: #2196F3; border: none; border-radius: 5px;">
+            <a href="{% url 'clientes:cliente_create' %}" style="color: white; text-decoration: none;">Crear Registro</a>
+        </button>
     </form>
     
-    <ul>
-        {% for object in object_list %}
-            <li>
-                <p>{{ object.dni }}</p>
-                <a href="{% url 'clientes:cliente_detail' object.id %}">Detalle</a>
-                <a href="{% url 'clientes:cliente_update' object.id %}">Actualizar</a> 
-                <a href="{% url 'clientes:cliente_delete' object.id %}">Eliminar</a>
-            </li>
-        {% empty %}
-            <p>No existe el valor buscado</p>
-        {% endfor %}
-    </ul>
+    <div style="margin: 0 20px;">
+        <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            <thead>
+                <tr style="background-color: #0097a7; color: white;">
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b;">CUIL</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b;">Apellido</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b;">Teléfono</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b; text-align: right;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e0f7fa;">{{ object.cuil }}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e0f7fa;">{{ object.apellido }}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e0f7fa;">{{ object.telefono }}</td>
+                        <td style="text-align: right; padding: 10px; border-bottom: 1px solid #e0f7fa;">
+                            <a href="{% url 'clientes:cliente_detail' object.id %}" style="margin-right: 5px; background-color: #2196F3; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Detalle</a>
+                            <a href="{% url 'clientes:cliente_update' object.id %}" style="margin-right: 5px; background-color: #4CAF50; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Actualizar</a>
+                            <a href="{% url 'clientes:cliente_delete' object.id %}" style="background-color: red; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Eliminar</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 10px;">No existe el valor buscado</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px; text-align: right;">
+        <button style="padding: 10px 20px; background-color: #0097a7; border: none; border-radius: 5px;">
+            <a href="{% url 'clientes:cliente_list' %}" style="color: white; text-decoration: none;">Atrás</a>
+        </button>
+    </div>
+</div>
 {% endblock main %}
+
+
+

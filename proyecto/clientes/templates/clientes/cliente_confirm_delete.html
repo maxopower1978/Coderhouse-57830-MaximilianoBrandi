@@ -1,14 +1,22 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
-    App Clientes: Eliminar Clientes
+<h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+    Eliminar Clientes
+</h1>
 {% endblock header %}
 
 {% block main %}
-    <p>Esta seguro que desea borrar el cliente "{{ object.dni }}"?</p>
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit">Confirma?</button>
-    </form>
-    <button><a href="{% url 'clientes:cliente_list' %}">Atrás</a></button>
+    <div style="text-align: center; background-color: #e0f7fa; padding: 20px;">
+        <p style="font-size: 18px;">¿Está seguro que desea borrar el cliente "{{ object.cuil }}"?</p>
+        <form method="POST" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            <button type="submit" style="padding: 10px 20px; background-color: #f44336; border: none; border-radius: 5px; color: white;">
+                Confirmar
+            </button>
+        </form>
+        <button style="padding: 10px 20px; background-color: #0097a7; border: none; border-radius: 5px;">
+            <a href="{% url 'clientes:cliente_list' %}" style="color: white; text-decoration: none;">Atrás</a>
+        </button>
+    </div>
 {% endblock main %}

@@ -6,6 +6,7 @@ class Cliente(models.Model):
     
     class Estado(models.TextChoices):
         # Estado civil
+        SELECCIONE = '', 'Seleccione'
         SOLTERO = "SOLTERO", "soltero"
         CASADO = "CASADO", "casado"
         DIVORCIADO = "DIVORCIADO", "divorciado"
@@ -20,11 +21,13 @@ class Cliente(models.Model):
     direccion = models.CharField(max_length=40, blank=True, null=True)
     email = models.EmailField(max_length=30)
     fecha_nacimiento = models.DateField(blank=True, null=True)
-    estado_civil = models.CharField(max_length=20, choices=Estado.choices)
+    estado_civil = models.CharField(
+        max_length=20,
+        choices=Estado.choices,
+        default=Estado.SELECCIONE,  # Establece "Seleccione" como valor por defecto
+    )
     avatar = models.ImageField(upload_to='avatares/', blank=True, null=True)
-    contraseña1 = models.CharField(max_length=12)
-    contraseña2 = models.CharField(max_length=12)
-    
+
     class Meta:
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
