@@ -31,31 +31,13 @@
                     <li class="nav-item">
                         <a class="btn btn-outline-primary me-2" href="{% url 'consultas:consulta_index' %}">Consultas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
+                    </li>
                     <!-- <form class="d-flex" role="search">
                         <input class="form-control me-2" type="email" placeholder="Correo Electrónico" aria-label="email">
                         <button class="btn btn-outline-success" type="submit">Suscríbete</button>
                     </form> -->
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:profile' %}">{{ user.username }}</a>
-                        </li>
-                        {% if user.cliente.avatar %}
-                            <img src="{{ user.cliente.avatar.url }}" alt="avatar" style="height: 30px" />
-                        {% else %}
-                            <img src="{% static 'home/img/telefono.png' %}" alt="avatar" style="height: 30px" />
-                    {% endif %} 
-                        <form action="{% url 'clientes:logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit">Logout</button>
-                        </form>
-                    {% else %}
-                         <li class="nav-item"></li>
-                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:login' %}">Clientes</a>
-                        </li>
-                    {% endif %}
                 </ul>
             </div>
         </div>

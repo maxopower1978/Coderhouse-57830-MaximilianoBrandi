@@ -1,19 +1,51 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
-    App Clientes: Detalle de Clientes
+<h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+    Detalle de Clientes
+</h1>
 {% endblock header %}
 
 {% block main %}
-    <form action="{% url 'clientes:cliente_list' %}" method="get">
-        <input type="text" name="q" placeholder="Buscar cliente....">
-        <button type="submit">Buscar cliente</button>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 60vh; background-color: #e0f7fa; padding: 20px;">
+    <form action="{% url 'clientes:cliente_list' %}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar cliente...." style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #0097a7;">
+        <button type="submit" style="padding: 10px 20px; background-color: #0097a7; border: none; border-radius: 5px; color: white;">Buscar cliente</button>
     </form>
-    <ul>
-        <li>CUIL: {{ object.cuil }}</li>
-        <li>Nombre: {{ object.nombre }}</li>
-        <li>Apellido: {{ object.apellido }}</li>
-        <li>Telefono: {{ object.telefono }}</li>
-    </ul>
-    <button><a href="{% url 'clientes:cliente_list' %}">Atrás</a></button>
+
+    <div style="margin: 0 auto; max-width: 600px;">
+        <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            <thead>
+                <tr style="background-color: #0097a7; color: white;">
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b;">Campo</th>
+                    <th style="padding: 12px; border-bottom: 2px solid #00796b;">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>CUIL:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.cuil }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Nombre:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.nombre }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Apellido:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.apellido }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Teléfono:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.telefono }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button style="padding: 10px 20px; background-color: #0097a7; border: none; border-radius: 5px;">
+            <a href="{% url 'clientes:cliente_list' %}" style="color: white; text-decoration: none;">Atrás</a>
+        </button>
+    </div>
+</div>
 {% endblock main %}
