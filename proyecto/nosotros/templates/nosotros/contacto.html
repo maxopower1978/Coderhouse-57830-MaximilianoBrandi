@@ -1,6 +1,12 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
+<div style="display: flex; justify-content: center; align-items: center; height: 5vh;">
+    <h3 style="margin-bottom: 5px; font-family: 'Arial', sans-serif;">Contacto</h3>
+</div>
+{% endblock header %}
+
+{% block main %}
 {% load static %}
 <div style="font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; height: 50vh;">
     <div style="display: flex; background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 600px;">
@@ -8,12 +14,39 @@
             <img src="{% static 'home/img/abogada.jpg' %}" alt="Tu Foto" style="border-radius: 50%; width: 100px; height: 100px;">
         </div>
         <div style="display: flex; flex-direction: column; justify-content: center;">
-            <h2>Tu Nombre</h2>
+            <h2>Dra. FR</h2>
             <p style="margin: 5px 0;">Teléfono: <a href="Whatsapp:+54 9 341 555-5555" style="color: #007BFF; text-decoration: none;">Whatsapp +54 9 341 555-5555</a></p>
-            <p style="margin: 5px 0;">Email: <a href="mailto:drafr@gmail.com" style="color: #007BFF; text-decoration: none;">tu-email@example.com</a></p>
-            <p style="margin: 5px 0;">Instagram: <a href="https://www.instagram.com/estudiodrafr" target="_blank" style="color: #007BFF; text-decoration: none;">@tuusuario</a></p>
+            <p style="margin: 5px 0;">Email: <a href="mailto:drafr@gmail.com" style="color: #007BFF; text-decoration: none;">estudiodraFR@gmail.com</a></p>
+            <p style="margin: 5px 0;">Instagram: <a href="https://www.instagram.com/estudiodrafr" target="_blank" style="color: #007BFF; text-decoration: none;">@estudiodrafr</a></p>
             <p style="margin: 5px 0;">Opiniones de Google: <a href="https://www.google.com/maps/place/estudiodrafr" target="_blank" style="color: #007BFF; text-decoration: none;">Ver Opiniones</a></p>
         </div>
     </div>
 </div>
-{% endblock header %}
+<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; font-family: Arial, sans-serif;">
+    <!-- Formulario de contacto a la izquierda -->
+    <div style="flex: 1; padding-right: 20px; max-width: 400px;margin-left: 40px;">
+        <h2 style="color: #007BFF;">Contáctanos</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- Mostrar los campos del formulario -->
+            <button type="submit" style="background-color: #007BFF; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;">
+                Enviar
+            </button>
+        </form>
+    </div>
+
+    <!-- Mapa de Google a la derecha -->
+    <div style="flex: 1; text-align: center;">
+        <h3 style="color: #007BFF;">Nuestra Ubicación</h3>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.124842393455!2d-60.630465799999996!3d-32.947713199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab1dc9b6d36f%3A0x97b9e9584d94d851!2sMonumento%20Hist%C3%B3rico%20Nacional%20a%20la%20Bandera!5e0!3m2!1ses-419!2sar!4v1726944504137!5m2!1ses-419!2sar" 
+            width="500" 
+            height="400" 
+            style="border: 0;" 
+            allowfullscreen="" 
+            loading="lazy"></iframe>
+    </div>
+</div>
+
+{% endblock main %}
+

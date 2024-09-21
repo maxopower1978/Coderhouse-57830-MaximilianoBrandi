@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Nosotros
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ContactForm
 
 def index(request):
     consulta = request.GET.get('q')
@@ -14,4 +15,13 @@ def aboutme(request):
     return render(request,'nosotros/about_me.html')
 
 def contacto(request):
-    return render(request,'nosotros/contacto.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Lógica para procesar el formulario
+            form.save()
+            return redirect('home:index')
+    else:
+        form = ContactForm()
+    
+    return render(request, 'nosotros/contacto.html', {'form': form})
