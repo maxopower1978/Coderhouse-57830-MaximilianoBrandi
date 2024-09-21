@@ -9,3 +9,9 @@ def index(request):
     else:
         query = Nosotros.objects.all()
     return render(request,'nosotros/index.html', {"object_list": query})
+
+def aboutme(request):
+    return render(request,'nosotros/about_me.html')
+
+def contacto(request):
+    return render(request,'nosotros/contacto.html')
