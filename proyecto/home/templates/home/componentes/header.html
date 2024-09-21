@@ -23,7 +23,7 @@
                         <a class="btn btn-outline-primary me-2" href="{% url 'nosotros:nosotros' %}">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-primary me-2" href="{% url 'derechos:derechos' %}">Derechos</a>
+                        <a class="btn btn-outline-primary me-2" href="{% url 'derechos:derechos_index' %}">Derechos</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-primary me-2" href="{% url 'nosotros:contacto' %}">Contáctanos</a>
@@ -40,20 +40,20 @@
                             <a class="btn btn-outline-primary me-2" href="#">Consulta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary me-2" href="{% url 'home:profile' %}">{{ user.username }}</a>
+                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:profile' %}">{{ user.username }}</a>
                         </li>
                         {% if user.cliente.avatar %}
                             <img src="{{ user.cliente.avatar.url }}" alt="avatar" style="height: 30px" />
                         {% else %}
                             <img src="{% static 'home/img/telefono.png' %}" alt="avatar" style="height: 30px" />
                     {% endif %} 
-                        <form action="{% url 'home:logout' %}" method="post">
+                        <form action="{% url 'clientes:logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Logout</button>
                         </form>
                     {% else %}
                          <li class="nav-item"></li>
-                            <a class="btn btn-outline-primary me-2" href="{% url 'home:login' %}">Clientes</a>
+                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:login' %}">Clientes</a>
                         </li>
                     {% endif %}
                 </ul>

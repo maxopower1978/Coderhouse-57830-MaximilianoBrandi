@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 class Cliente(models.Model):
     # Modelo alta de clientes
@@ -16,11 +17,13 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=30)
     nombre = models.CharField(max_length=30)
     telefono = models.IntegerField()
-    direccion = models.TextField(max_length=50, blank=True, null=True)
+    direccion = models.CharField(max_length=40, blank=True, null=True)
     email = models.EmailField(max_length=30)
-    fecha_nacimiento = models.DateTimeField()
-    estado_consulta = models.CharField(max_length=20, choices=Estado.choices)
+    fecha_nacimiento = models.DateField(blank=True, null=True)
+    estado_civil = models.CharField(max_length=20, choices=Estado.choices)
     avatar = models.ImageField(upload_to='avatares/', blank=True, null=True)
+    contraseña1 = models.CharField(max_length=12)
+    contraseña2 = models.CharField(max_length=12)
     
     class Meta:
         verbose_name = 'Cliente'
@@ -28,5 +31,5 @@ class Cliente(models.Model):
 
     def __str__(self):
         return (
-            f"{self.apellido}, {self.nombre} ({self.dni}) - Telefono: {self.telefono}"
+            f"{self.apellido}, {self.nombre} ({self.cuil}) - Telefono: {self.telefono}"
         )

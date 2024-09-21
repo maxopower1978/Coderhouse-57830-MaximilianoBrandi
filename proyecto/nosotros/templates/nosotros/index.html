@@ -14,12 +14,12 @@
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <img src="{% static 'home/img/abogada.jpg' %}" alt="{{ object.nombre }}" style="width: 200px; height: 200px; border-radius: 50%; margin-right: 20px;">
             <div>
-                <h3 style="margin: 0; font-family: 'Arial', sans-serif; margin-bottom: 20px;">{{ object.nombre|upper }}</h3>
-                <p style="font-family: 'Georgia', serif; margin-right: 125px;">{{ object.descripcion }}</p>
-                <p style="font-family: 'Arial', sans-serif;">
-                    <img src="{% static 'home/img/telefono.png' %}" alt="Teléfono" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 5px;">
+                <h2 style="margin: 0; font-family: 'Arial', sans-serif; margin-bottom: 20px;">{{ object.nombre|upper }}</h2>
+                <h3 style="font-family: 'Georgia', serif; margin-right: 125px;">{{ object.descripcion }}</h3>
+                <h3 style="font-family: 'Arial', sans-serif;">
+                    <img src="{% static 'home/img/telefono.png' %}" alt="Teléfono" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 10px;">
                         {{ object.celular }}
-                </p>
+                </h3>
             </div>
         </div>
     </div>
