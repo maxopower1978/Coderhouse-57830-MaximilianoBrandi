@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    App Consultas: Eliminar Consultas
+{% endblock header %}
+
+{% block main %}
+    <p>Esta seguro que desea borrar la consulta del cliente {{ object.cuil }}"?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirma?</button>
+    </form>
+    <button><a href="{% url 'consultas:consulta_list' %}">Atrás</a></button>
+{% endblock main %}

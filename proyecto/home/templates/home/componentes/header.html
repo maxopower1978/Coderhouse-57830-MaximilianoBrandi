@@ -28,6 +28,9 @@
                     <li class="nav-item">
                         <a class="btn btn-outline-primary me-2" href="{% url 'nosotros:contacto' %}">Contáctanos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary me-2" href="{% url 'consultas:consulta_index' %}">Consultas</a>
+                    </li>
                     <!-- <form class="d-flex" role="search">
                         <input class="form-control me-2" type="email" placeholder="Correo Electrónico" aria-label="email">
                         <button class="btn btn-outline-success" type="submit">Suscríbete</button>
@@ -35,9 +38,6 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary me-2" href="#">Consulta</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-primary me-2" href="{% url 'clientes:profile' %}">{{ user.username }}</a>

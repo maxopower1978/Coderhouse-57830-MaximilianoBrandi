@@ -1,0 +1,51 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    <h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+        Detalle de consultas
+    </h1>
+{% endblock header %}
+
+{% block main %}
+<div style="text-align: center; background-color: #e0f7fa; padding: 20px;">
+    <form action="{% url 'consultas:consulta_list' %}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar consulta...." style="padding: 10px; border-radius: 5px; border: 1px solid #4fc3f7;">
+        <button type="submit" style="padding: 10px; background-color: #0097a7; border: none; border-radius: 5px; color: white;">Buscar consulta</button>
+    </form>
+    
+    <div style="margin: 0 20px;"> <!-- Margen izquierdo y derecho -->
+        <table style="width: auto; margin: 0 auto; border-collapse: collapse; background-color: #ffffff; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <thead>
+                <tr style="background-color: #4fc3f7; color: white;">
+                    <th style="padding: 10px; border-bottom: 2px solid #0097a7;">Campo</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #0097a7;">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>CUIL:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.cuil.cuil }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Derecho:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.derecho.nombre }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Consulta:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;">{{ object.consulta }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0f7fa; text-align: left;"><strong>Fecha de Consulta:</strong></td>
+                    <td style="padding: 10px; text-align: left;">{{ object.fecha_consulta }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button style="padding: 10px; background-color: #0097a7; border: none; border-radius: 5px;">
+            <a href="{% url 'consultas:consulta_list' %}" style="color: white; text-decoration: none;">Atrás</a>
+        </button>
+    </div>
+</div>
+{% endblock main %}
