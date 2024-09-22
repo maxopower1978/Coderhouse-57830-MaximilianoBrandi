@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Nosotros
-from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ContactForm
 
 def index(request):

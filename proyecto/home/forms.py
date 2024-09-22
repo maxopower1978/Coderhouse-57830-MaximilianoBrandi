@@ -11,7 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = '__all__'  # Campos del usuario
+        fields = '__all__'  
 
 class UserProfileForm(forms.ModelForm):
     class Meta:

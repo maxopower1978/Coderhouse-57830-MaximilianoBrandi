@@ -17,10 +17,6 @@ class ClienteCreateForm(forms.ModelForm):
             'fecha_nacimiento': forms.DateInput(attrs={
                 'class': 'form-control',
                 'type': 'date',
-                'style': 'width: 150px; margin: 0 auto;'  # Ajusta el tamaño y centra
+                'style': 'width: 150px; margin: 0 auto;' 
             }),
         }
-
-# class LoginForm(forms.Form):
-#     cuil = forms.CharField(max_length=15, label='Número de CUIL')
-#     password = forms.CharField(widget=forms.PasswordInput, label='Contraseña')
