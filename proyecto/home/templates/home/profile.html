@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+
+{% block header %}
+    <div style="display: flex; justify-content: center; align-items: center; height: 5vh;">
+        <h3 style="margin-bottom: 5px; font-family: 'Arial', sans-serif;">Actualizar Perfil</h3>
+    </div>
+{% endblock header %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Perfil de Usuario</h2>
+        <form id="avatar-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ profile_form.as_p }}
+            <button type="submit" class="btn btn-primary">Actualizar Avatar</button>
+        </form>
+        
+        <div id="success-message" class="mt-3"></div>
+        <div class="mt-3">
+            <h5>Tu Avatar:</h5>
+            {% if user.userprofile.avatar %}
+                <img src="{{ user.userprofile.avatar.url }}" alt="Avatar" class="img-fluid" style="max-width: 200px;">
+            {% else %}
+                <p>No tienes un avatar configurado.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#avatar-form').on('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        $('#success-message').html('<div class="alert alert-success">' + response.message + '</div>');
+                        // Aquí puedes actualizar la vista del avatar si quieres
+                        location.reload(); // Recargar la página para mostrar el nuevo avatar
+                    },
+                    error: function(response) {
+                        $('#success-message').html('<div class="alert alert-danger">Error al actualizar el avatar.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock main %}
+
+
+
+

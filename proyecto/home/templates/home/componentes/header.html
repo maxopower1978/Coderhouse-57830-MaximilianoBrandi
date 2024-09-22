@@ -28,16 +28,29 @@
                     <li class="nav-item">
                         <a class="btn btn-outline-primary me-2" href="{% url 'nosotros:contacto' %}">Contáctanos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary me-2" href="{% url 'consultas:consulta_index' %}">Consultas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
-                    </li>
-                    <!-- <form class="d-flex" role="search">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary me-2" href="{% url 'consultas:consulta_index' %}">Consultas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
+                        </li>
+                        {% if user.derecho.avatar %}
+                            <img src="{{user.cliente.avatar.url }}" alt="avatar" style="height: 30px;">
+                        {% endif %}#}
+                         <!-- <form class="d-flex" role="search">
                         <input class="form-control me-2" type="email" placeholder="Correo Electrónico" aria-label="email">
                         <button class="btn btn-outline-success" type="submit">Suscríbete</button>
-                    </form> -->
+                        </form> -->
+                        <form action="{% url 'home:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar Sesión</button>
+                        </form>
+                    {% else %}
+                        <div style="display: flex; justify-content: center; align-items: center; height: 5vh;">
+                            <button style="margin-bottom: 5px; font-family: 'Arial', sans-serif;"><a href="{% url 'home:login' %}">Login</a></button>
+                        </div>
+                    {% endif %}
                 </ul>
             </div>
         </div>
