@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,9 +128,6 @@ USE_TZ = True
 
 STATIC_URL = 'home/static/'
 
-# Ruta donde Django buscará tus archivos estáticos en el sistema
-STATICFILES_DIRS = [BASE_DIR / "home/static"]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -133,5 +136,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL indica la URL pública desde donde se podrán acceder a los archivos multimedia
 MEDIA_URL = '/media/'
 # MEDIA_ROOT sirve para indicar la ruta donde se almacenarán los archivos multimedia
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Confirmación de autenticación
+# URL de la página de inicio de sesión
+LOGIN_URL = reverse_lazy('home:login') 
+# URL a la que se redirige luego de inicar sesión exitoso
+LOGIN_REDIRECT_URL = reverse_lazy('home:index')
