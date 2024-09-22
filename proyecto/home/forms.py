@@ -10,10 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ('username', 'email')  # Campos del usuario
+        model = UserProfile
+        fields = '__all__'  # Campos del usuario
 
 class UserProfileForm(forms.ModelForm):
+    image = forms.ImageField(label='avatar',required=False)
     class Meta:
         model = UserProfile
-        fields = ['avatar']  # Solo el campo del avatar
+        fields = ['image']  # Solo el campo del avatar
