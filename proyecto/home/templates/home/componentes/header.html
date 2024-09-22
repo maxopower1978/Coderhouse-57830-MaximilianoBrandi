@@ -36,10 +36,11 @@
                             <a class="btn btn-outline-primary me-2" href="{% url 'clientes:index' %}">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <h4><a class="text-muted small mb-4 mb-lg-0">Hola, {{ user.username }}</a></h4>
+                            <h4><a class="btn btn-outline-primary me-2" href="{% url 'home:profile' %}">
+                            <button>Hola, {{ user.username }}</button></a></h4>
                         </li>
                         {% if user.userprofile.image %}
-                            <img src="{{ user.userprofile.image.url }}" alt="Avatar" class="img-fluid" style="max-width: 3%;">
+                            <img src="{{ user.userprofile.image.url }}" alt="Avatar" class="img-fluid" style="max-width: 5%;">
                         {% endif %}
                         <form action="{% url 'home:logout' %}" method="POST">
                             {% csrf_token %}

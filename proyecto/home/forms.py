@@ -14,7 +14,6 @@ class UserUpdateForm(forms.ModelForm):
         fields = '__all__'  # Campos del usuario
 
 class UserProfileForm(forms.ModelForm):
-    image = forms.ImageField(label='avatar',required=False)
     class Meta:
-        model = UserProfile
-        fields = ['image']  # Solo el campo del avatar
+        model = User
+        fields = ('username','first_name','last_name','email')  

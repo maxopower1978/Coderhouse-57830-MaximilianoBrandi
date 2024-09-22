@@ -23,28 +23,27 @@ class Register(CreateView):
 
 
 class Profile(LoginRequiredMixin, UpdateView):
-    model = UserProfile  # Asegúrate de usar el modelo correcto
+    model = User  # Asegúrate de usar el modelo correcto
     form_class = UserProfileForm
     template_name = 'home/profile.html'
     success_url = reverse_lazy('home:index')
 
     def get_object(self):
         # Devuelve el perfil del usuario actualmente autenticado
-        return self.request.user.userprofile
+        return self.request.user
 
-    def form_valid(self, form):
-        user_profile = form.save(commit=False)
-        user_profile.image = self.request.FILES.get('image')  # Obtén la imagen del formulario
-        user_profile.save()  # Guarda el perfil
+    # def form_valid(self, form):
+    #     user_profile = form.save(commit=False)
+    #     user_profile.image = self.request.FILES.get('image')  # Obtén la imagen del formulario
+    #     user_profile.save()  # Guarda el perfil
 
-        new_avatar_url = user_profile.image.url  # Obtén la nueva URL del avatar
-        return JsonResponse({'message': 'Avatar actualizado correctamente.', 'new_avatar_url': new_avatar_url})
+    #     new_avatar_url = user_profile.image.url  # Obtén la nueva URL del avatar
+    #     return JsonResponse({'message': 'Avatar actualizado correctamente.', 'new_avatar_url': new_avatar_url})
 
-    def form_invalid(self, form):
-        print(form.errors)  # Para depurar errores
-        return JsonResponse({'message': 'Error al actualizar el avatar.'}, status=400)
+    # def form_invalid(self, form):
+    #     print(form.errors)  # Para depurar errores
+    #     return JsonResponse({'message': 'Error al actualizar el avatar.'}, status=400)
 
-@csrf_protect
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -53,7 +52,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home/profile.html')  # Cambia 'profile' a tu URL de redirección
+            return redirect('home:profile')  # Cambia 'profile' a tu URL de redirección
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
 

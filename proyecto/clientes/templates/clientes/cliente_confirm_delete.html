@@ -1,22 +1,35 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
-<h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
-    Eliminar Clientes
-</h1>
+    <h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+        Eliminar Clientes
+    </h1>
 {% endblock header %}
 
 {% block main %}
-    <div style="text-align: center; background-color: #e0f7fa; padding: 20px;">
-        <p style="font-size: 18px;">¿Está seguro que desea borrar el cliente "{{ object.cuil }}"?</p>
-        <form method="POST" style="margin-bottom: 20px;">
-            {% csrf_token %}
-            <button type="submit" style="padding: 10px 20px; background-color: #f44336; border: none; border-radius: 5px; color: white;">
-                Confirmar
-            </button>
-        </form>
-        <button style="padding: 10px 20px; background-color: #0097a7; border: none; border-radius: 5px;">
-            <a href="{% url 'clientes:cliente_list' %}" style="color: white; text-decoration: none;">Atrás</a>
-        </button>
-    </div>
+<div class="container d-flex justify-content-center align-items-center" style="height: 40vh;">
+    <table class="table table-bordered" style="width: 50%; background-color: #E0F7FA; border-color: #81D4FA;">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center" style="background-color: #81D4FA; color: white;">Confirmación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="text-center">¿Está seguro de que desea borrar el cliente con CUIL "{{ object.cuil }}"?</td>
+            </tr>
+            <tr>
+                <td class="text-center">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                    </form>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'clientes:cliente_list' %}" class="btn btn-secondary">Atrás</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock main %}

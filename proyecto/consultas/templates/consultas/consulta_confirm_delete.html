@@ -1,14 +1,35 @@
 {% extends 'home/base.html' %}
 
 {% block header %}
-    App Consultas: Eliminar Consultas
+    <h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 5px;">
+        Eliminar consulta
+    </h1>
 {% endblock header %}
 
 {% block main %}
-    <p>Esta seguro que desea borrar la consulta del cliente {{ object.cuil }}"?</p>
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit">Confirma?</button>
-    </form>
-    <button><a href="{% url 'consultas:consulta_list' %}">Atrás</a></button>
+<div class="container d-flex justify-content-center align-items-center" style="height: 40vh;">
+    <table class="table table-bordered" style="width: 50%; background-color: #E0F7FA; border-color: #81D4FA;">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center" style="background-color: #81D4FA; color: white;">Confirmación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="text-center">¿Está seguro de que desea borrar la consulta del cliente con CUIL {{ object.cuil }}?</td>
+            </tr>
+            <tr>
+                <td class="text-center">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                    </form>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'consultas:consulta_list' %}" class="btn btn-secondary">Atrás</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock main %}
