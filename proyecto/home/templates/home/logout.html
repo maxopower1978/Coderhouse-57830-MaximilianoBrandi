@@ -2,17 +2,16 @@
 
 {% block header %}
 <div style="display: flex; justify-content: center; align-items: center; height: 5vh;">
-    <h3 style="margin-bottom: 5px; font-family: 'Arial', sans-serif;">Logout</h3>
+    <h3 style="margin-bottom: 5px; font-family: 'Arial', sans-serif;">Has cerrado sesión</h3>
 </div>
 {% endblock header %}
 
 {% block main %}
-    <div class="container mt-5">
-        <h2 class="text-center">Has cerrado sesión</h2>
-        <p class="text-center">¡Hasta pronto!</p>
-        <div class="text-center mt-3">
-            <a href="{% url 'home:index' %}" class="btn btn-primary">Volver a la página de inicio</a>
-        </div>
-    </div>
+<div class="container mt-5 align-items: center text-center">
+    <h1>¡Hasta pronto!</h1>
+    <li class="nav-item">
+        <a class="btn btn-outline-primary mt-3" href="{% url 'nosotros:contacto' %}">Contáctanos</a>
+    </li>
+</div>
 {% endblock main %}
 
